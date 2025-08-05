@@ -1,0 +1,23 @@
+# Core Python packages
+pandas
+scikit-learn
+
+# For experiment tracking (used in Part 2)
+mlflow
+
+# (Optional) For using DVC if enabled
+dvc
+
+# For later steps
+fastapi         # or use flask if preferred
+uvicorn         # for FastAPI server
+python-multipart  # to support file uploads in FastAPI
+
+# Logging and monitoring
+loguru
+
+# Input validation (bonus)
+pydantic
+
+# Jupyter notebook (optional, for EDA)
+notebook
