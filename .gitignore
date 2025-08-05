@@ -1,0 +1,9 @@
+# .gitignore
+__pycache__/
+*.pyc
+.env
+mlruns/
+venv/
+logs/
+*.db
+mlops/
