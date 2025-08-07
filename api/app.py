@@ -33,7 +33,8 @@ def read_root():
     return {"message": "Welcome to the Iris Classifier API"}
 
 
-iris_predictions = Counter("iris_predictions_total", "Total number of predictions made")
+iris_predictions = Counter("iris_predictions_total",
+                           "Total number of predictions made")
 
 
 @app.post("/predict")
@@ -49,7 +50,8 @@ def predict(features: IrisFeatures):
     predicted_class = int(prediction[0])
 
     # Logging to file
-    logging.info(f"Input: {input_df.to_dict(orient='records')[0]} --> Prediction: {predicted_class}")
+    logging.info(f"Input: {input_df.to_dict(orient='records')[0]} "
+                 f"--> Prediction: {predicted_class}")
 
     # Logging to SQLite
     conn = sqlite3.connect("logs/predictions.db")
