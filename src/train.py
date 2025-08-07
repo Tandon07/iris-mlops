@@ -41,4 +41,3 @@ if __name__ == "__main__":
     rf_params = {"n_estimators": 100, "max_depth": 2}
     rf_model = RandomForestClassifier(**rf_params)
     train_and_log_model(rf_model, "RandomForestModel", rf_params)
-
