@@ -25,7 +25,8 @@ def train_and_log_model(model, model_name, params):
         preds = model.predict(X_test)
         acc = accuracy_score(y_test, preds)
         mlflow.log_metric("accuracy", acc)
-        mlflow.sklearn.log_model(model, "model", registered_model_name=model_name)
+        mlflow.sklearn.log_model(model, "model",
+                                 registered_model_name=model_name)
         print(f"{model_name} Accuracy:", acc)
 
 
