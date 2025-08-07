@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import mlflow.pyfunc
-mlflow.set_tracking_uri("http://localhost:5000")
 import pandas as pd
+
+mlflow.set_tracking_uri("http://localhost:5000")
 
 app = FastAPI(title="Iris Classifier API")
 
 # Load the MLflow model from registry
 model = mlflow.pyfunc.load_model("models:/LogisticRegressionModel/Production")
+
 
 # Define the input schema using Pydantic
 class IrisFeatures(BaseModel):
@@ -16,9 +18,11 @@ class IrisFeatures(BaseModel):
     petal_length_cm: float
     petal_width_cm: float
 
+
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Iris Classifier API"}
+
 
 @app.post("/predict")
 def predict(features: IrisFeatures):

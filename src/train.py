@@ -1,12 +1,13 @@
 import pandas as pd
 import mlflow
-mlflow.set_tracking_uri("http://localhost:5000")
 import mlflow.sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
+mlflow.set_tracking_uri("http://localhost:5000")
+
 
 def load_data():
     df = pd.read_csv("data/iris.csv")
@@ -15,6 +16,7 @@ def load_data():
     X = df.drop("target", axis=1)
     y = df["target"]
     return train_test_split(X, y, test_size=0.2, random_state=42)
+
 
 def train_and_log_model(model, model_name, params):
     with mlflow.start_run(run_name=model_name):
@@ -25,6 +27,7 @@ def train_and_log_model(model, model_name, params):
         mlflow.log_metric("accuracy", acc)
         mlflow.sklearn.log_model(model, "model", registered_model_name=model_name)
         print(f"{model_name} Accuracy:", acc)
+
 
 if __name__ == "__main__":
     X_train, X_test, y_train, y_test = load_data()

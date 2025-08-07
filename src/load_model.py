@@ -1,4 +1,6 @@
 import mlflow.pyfunc
+import pandas as pd
+
 mlflow.set_tracking_uri("http://localhost:5000")
 
 # Load the best registered model from MLflow Model Registry
@@ -12,7 +14,6 @@ sample_input = {
     "petal_width_(cm)": 0.2
 }
 
-import pandas as pd
 input_df = pd.DataFrame([sample_input])
 
 # Make prediction
