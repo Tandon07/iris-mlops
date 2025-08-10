@@ -21,3 +21,6 @@ pydantic
 
 # Jupyter notebook (optional, for EDA)
 notebook
+
+# monitoring
+prometheus-fastapi-instrumentator
