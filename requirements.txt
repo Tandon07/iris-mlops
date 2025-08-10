@@ -24,3 +24,4 @@ notebook
 
 # monitoring
 prometheus-fastapi-instrumentator
+prometheus-client
