@@ -46,11 +46,13 @@ def train_and_log_model(model, model_name, params, scale=False):
             ])
             pipeline.fit(X_train, y_train)
             preds = pipeline.predict(X_test)
-            mlflow.sklearn.log_model(pipeline, "model", registered_model_name=model_name)
+            mlflow.sklearn.log_model(pipeline, "model",
+                                     registered_model_name=model_name)
         else:
             model.fit(X_train, y_train)
             preds = model.predict(X_test)
-            mlflow.sklearn.log_model(model, "model", registered_model_name=model_name)
+            mlflow.sklearn.log_model(model, "model",
+                                     registered_model_name=model_name)
 
         acc = accuracy_score(y_test, preds)
         mlflow.log_metric("accuracy", acc)
@@ -63,7 +65,8 @@ if __name__ == "__main__":
     # Logistic Regression (scaling important)
     lr_params = {"C": 1.0, "max_iter": 80}
     lr_model = LogisticRegression(**lr_params)
-    train_and_log_model(lr_model, "LogisticRegressionModel", lr_params, scale=True)
+    train_and_log_model(lr_model, "LogisticRegressionModel",
+                        lr_params, scale=True)
 
     # Random Forest (scaling not necessary)
     rf_params = {"n_estimators": 100, "max_depth": 2}
